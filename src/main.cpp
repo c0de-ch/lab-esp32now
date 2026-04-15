@@ -22,7 +22,7 @@ struct __attribute__((packed)) Message {
 static volatile bool shouldBlink = false;
 static uint8_t myMac[6];
 
-static void onReceive(const esp_now_recv_info_t *info, const uint8_t *data, int len) {
+static void onReceive(const uint8_t *mac, const uint8_t *data, int len) {
     if (len < (int)sizeof(Message)) return;
 
     const Message *msg = reinterpret_cast<const Message *>(data);
